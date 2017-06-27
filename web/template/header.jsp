@@ -13,9 +13,9 @@
         <!-- Logo -->
         <a href="./perfil" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini">MiConstru</span>
+            <span class="logo-mini">SERVEL</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b draggable="true">MiConstructora</b></span>
+            <span class="logo-lg"><b draggable="true">SERVEL</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -32,16 +32,16 @@
                     <!-- Control Sidebar Toggle Button -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="/testjava/resources/dist/img/user2-160x160.jpg" class="user-image" alt="${user.user_login}">
-                            <span class="hidden-xs">${user.employee_name}</span>
+                            <img src="/integracion.java/resources/dist/img/user2-160x160.jpg" class="user-image" alt="${user.login}">
+                            <span class="hidden-xs">${user.name}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="/testjava/resources/dist/img/user2-160x160.jpg" class="img-circle" alt="${user.user_login}">
+                                <img src="/integracion.java/resources/dist/img/user2-160x160.jpg" class="img-circle" alt="${user.login}">
                                 <p>
-                                    ${user.employee_name}
-                                    <small>${user.user_login}</small>
+                                    ${user.name}
+                                    <small>${user.login}</small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -62,10 +62,10 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="/testjava/perfil" class="btn btn-default btn-flat">Perfil</a>
+                                    <a href="/integracion.java/perfil" class="btn btn-default btn-flat">Perfil</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="/testjava/salir" class="btn btn-default btn-flat">Salir</a>
+                                    <a href="/integracion.java/salir" class="btn btn-default btn-flat">Salir</a>
                                 </div>
                             </li>
                         </ul>
@@ -85,51 +85,32 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">Navegación</li>
-                <c:forEach items="${pageList}" var="objPage">
-                    <c:if test="${objPage.parent==0}">
-                        <c:choose>
-                            <c:when test="${objPage.path=='#'}">
-                            <li class="treeview">
-                                <a href="${objPage.path}">
-                                    <i class="fa ${objPage.icon}"></i>
-                                    <span>${objPage.name}</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <c:forEach items="${pageList}" var="objPageChild">
-                                        <li>
-                                        <c:if test="${objPageChild.id!=0 && objPage.id == objPageChild.parent}">
-                                            <c:choose>
-                                                <c:when test="${objPageChild.path=='#'}">
-                                                    <a href="${objPageChild.path}">
-                                                        <i class="fa ${objPageChild.icon}"></i>
-                                                        <span>${objPageChild.name}</span>
-                                                        <i class="fa fa-angle-left pull-right"></i>
-                                                    </a>
-                                                    <ul class="treeview-menu">
-                                                        <c:forEach items="${pageList}" var="objPageSubChild">
-                                                            <c:if test="${objPageSubChild.id!=0 && objPageChild.id == objPageSubChild.parent}">
-                                                                <li><a href="${objPageSubChild.path}"><i class="fa ${objPageSubChild.icon}"></i> ${objPageSubChild.name}</a></li>
-                                                            </c:if>
-                                                        </c:forEach>
-                                                    </ul>
-                                                 </c:when>
-                                                <c:otherwise>
-                                                    <a href="${objPageChild.path}"><i class="fa ${objPageChild.icon}"></i> ${objPageChild.name}</a>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </li>
-                                        </c:if>
-                                    </c:forEach>
-                                </ul>
-                            </li>
-                            </c:when>
-                            <c:otherwise>
-                                <li><a href="${objPage.path}"><i class="fa ${objPage.icon}"></i> ${objPage.name}</a></li>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:if>
-                </c:forEach>
+                <li><a href="./perfil"><i class="fa fa-home"></i> Inicio</a></li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-edit"></i>
+                        <span>Mantenedores</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="./mantenedores/usuarios"><i class="fa fa-user"></i> Usuarios</a>
+                        </li>
+                        <li>
+                            <a href="./mantenedores/procesos"><i class="fa fa-table"></i> Procesos Electorales</a>
+                        </li>
+                        <li>
+                            <a href="./mantenedores/partidos"><i class="fa fa-columns"></i> Partidos Políticos</a>
+                        </li>
+                        <li>
+                            <a href="./mantenedores/padron"><i class="fa fa-list"></i> Padrón Electoral</a>
+                        </li>
+                        <li>
+                            <a href="./mantenedores/votantes"><i class="fa fa-hand-o-up"></i> Votantes</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="./configuracion"><i class="fa fa-cogs"></i> Configuración del Sistema</a></li>
             </ul>
             
         </section>

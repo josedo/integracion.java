@@ -20,21 +20,17 @@
             <div class="col-xs-3">
             	<div class="box box-primary">
                     <div class="box-body box-profile">
-                        <img src="resources/dist/img/user2-160x160.jpg" class="profile-user-img img-responsive img-circle" alt="User Image">
-                        <h3 class="profile-username text-center">${user.employee_name}</h3>
-                        <p class="text-muted text-center">${user.profile_name}</p>
+                        <img src="resources/dist/img/user2-160x160.jpg" class="profile-user-img img-responsive img-circle" alt="Usuario">
+                        <h3 class="profile-username text-center">${user.name}</h3>
+                        <p class="text-muted text-center">${user.profile}</p>
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
                                 <b>Rut</b>
-                                <a class="pull-right">${user.employee_rut}-${user.employee_dv}</a>
+                                <a class="pull-right">${user.rut}-${user.dv}</a>
                             </li>
                             <li class="list-group-item">
                                 <b>Correo</b><br>
-                                <a class="email-large">${user.user_email}</a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Obra</b>
-                                <a class="pull-right">${user.building_site_name}</a>
+                                <a class="email-large">${user.login}</a>
                             </li>
                         </ul>
                         <button id="change-password" class="btn btn-primary btn-block"><b>Cambiar Contraseña</b></button>

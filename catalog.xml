@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/session/session?wsdl" uri="src/conf/xml-resources/web-service-references/session/wsdl/localhost_8080/session/session.wsdl"/>
+    <system systemId="http://localhost:8080/session/session?xsd=1" uri="src/conf/xml-resources/web-service-references/session/wsdl/localhost_8080/session/session.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/maintainers/maintainers?wsdl" uri="src/conf/xml-resources/web-service-references/maintainers/wsdl/localhost_8080/maintainers/maintainers.wsdl"/>
+    <system systemId="http://localhost:8080/maintainers/maintainers?xsd=1" uri="src/conf/xml-resources/web-service-references/maintainers/wsdl/localhost_8080/maintainers/maintainers.xsd_1.xsd"/>
+</catalog>
