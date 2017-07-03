@@ -85,7 +85,7 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">Navegación</li>
-                <li><a href="./perfil"><i class="fa fa-home"></i> Inicio</a></li>
+                <li><a href="/integracion.java/perfil"><i class="fa fa-home"></i> Inicio</a></li>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-edit"></i>
@@ -94,23 +94,29 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="./mantenedores/usuarios"><i class="fa fa-user"></i> Usuarios</a>
+                            <a href="/integracion.java/mantenedores/usuarios"><i class="fa fa-user"></i> Usuarios</a>
                         </li>
                         <li>
-                            <a href="./mantenedores/procesos"><i class="fa fa-table"></i> Procesos Electorales</a>
+                            <a href="/integracion.java/mantenedores/procesos"><i class="fa fa-table"></i> Procesos Electorales</a>
                         </li>
                         <li>
-                            <a href="./mantenedores/partidos"><i class="fa fa-columns"></i> Partidos Políticos</a>
+                            <a href="/integracion.java/mantenedores/partidos"><i class="fa fa-columns"></i> Partidos Políticos</a>
                         </li>
                         <li>
-                            <a href="./mantenedores/padron"><i class="fa fa-list"></i> Padrón Electoral</a>
+                            <a href="/integracion.java/mantenedores/padron"><i class="fa fa-list"></i> Padrón Electoral</a>
                         </li>
                         <li>
-                            <a href="./mantenedores/votantes"><i class="fa fa-hand-o-up"></i> Votantes</a>
+                            <a href="/integracion.java/mantenedores/candidatos"><i class="fa fa-child"></i> Candidatos</a>
+                        </li>
+                        <li>
+                            <a href="/integracion.java/mantenedores/vocales"><i class="fa fa-info"></i> Vocales de Mesa</a>
+                        </li>
+                        <li>
+                            <a href="/integracion.java/mantenedores/votantes"><i class="fa fa-hand-o-up"></i> Votantes</a>
                         </li>
                     </ul>
                 </li>
-                <li><a href="./configuracion"><i class="fa fa-cogs"></i> Configuración del Sistema</a></li>
+                <li><a href="/integracion.java/configuracion"><i class="fa fa-cogs"></i> Configuración del Sistema</a></li>
             </ul>
             
         </section>

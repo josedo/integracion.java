@@ -111,16 +111,19 @@
         });
     }
     
-    $('#region_id').select2().on('change', function() {
+    $('#region').select2().on('change', function() {
         if (this.value > 0) {
             $.ajax({
-                url: './provincias',
-                data: {region_id: this.value},
+                url: './provinces',
+                data: {region: this.value},
                 type: 'POST',
                 success: function (data) {
                     if (typeof(data.provinces) !== undefined) {
-                        $('#province_id').html('').select2({
+                        $('#province').html('').select2({
                             data: data.provinces
+                        });
+                        $('#district').html('').select2({
+                            data: null
                         });
                     } else {
                         swal({
@@ -141,15 +144,15 @@
         }
     });
     
-    $('#province_id').select2().on('change', function() {
+    $('#province').select2().on('change', function() {
         if (this.value > 0) {
             $.ajax({
-                url: './comunas',
-                data: {province_id: this.value},
+                url: './districts',
+                data: {province: this.value},
                 type: 'POST',
                 success: function (data) {
                     if (typeof(data.districts) !== undefined) {
-                        $('#district_id').html('').select2({
+                        $('#district').html('').select2({
                             data: data.districts
                         });
                     } else {
@@ -180,7 +183,6 @@
         var data = sigecoApp.dataFormMantenedor();
         if (!sigecoApp.validForm())
             return;
-        $('#new').modal('hide');
         var controller = $(this).attr('data-controller');
         var url = $(this).attr('data-url');
         swal({
@@ -199,6 +201,7 @@
                 type: "POST",
                 success: function (data) {
                     if (data.response === 1) {
+                        $('#new').modal('hide');
                         swal({
                             title: "Datos guardados!",
                             text: "",
@@ -280,13 +283,13 @@
             });
         });
     });
-
-    $('.btnRechazar').on('click', function () {
+    
+    $('.clearProcess').on('click', function () {
         var id = $(this).attr('data-id');
         var url = $(this).attr('data-url');
         swal({
-            title: 'Rechazar Solicitud',
-            text: 'Está seguro que desea rechazar esta solicitud?',
+            title: 'Eliminar candidatos',
+            text: 'Está seguro que desea eliminar todos los candidatos de este proceso?',
             type: "warning",
             showCancelButton: true,
             closeOnConfirm: false,
@@ -301,7 +304,7 @@
                 success: function (data) {
                     if (data.response === 1) {
                         swal({
-                            title: "Solicitud rechazada!",
+                            title: "Candidatos eliminados!",
                             text: "",
                             type: "success"
                         },
@@ -310,61 +313,15 @@
                                 });
                     } else {
                         swal({
-                            title: "Error al rechazar la solicitud!",
-                            text: "Intente nuevamente.",
+                            title: "Error al eliminar candidatos!",
+                            text: data.msg || "Intente nuevamente.",
                             type: "error"
                         });
                     }
                 },
                 error: function () {
                     swal({
-                        title: "Error al rechazar la solicitud!",
-                        text: "Intente nuevamente.",
-                        type: "error"
-                    });
-                }
-            });
-        });
-    });
-
-    $('.btnAprobar').on('click', function () {
-        var id = $(this).attr('data-id');
-        var url = $(this).attr('data-url');
-        swal({
-            title: 'Aprobar Solicitud',
-            text: 'Está seguro que desea aprobar esta solicitud?',
-            type: "warning",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            animation: 'slide-from-top',
-            showLoaderOnConfirm: true
-        },
-        function () {
-            $.ajax({
-                url: url,
-                data: 'id=' + id,
-                type: "POST",
-                success: function (data) {
-                    if (data.response === 1) {
-                        swal({
-                            title: "Solicitud aprobada!",
-                            text: "",
-                            type: "success"
-                        },
-                                function () {
-                                    location.reload();
-                                });
-                    } else {
-                        swal({
-                            title: "Error al aprobar la solicitud!",
-                            text: "Intente nuevamente.",
-                            type: "error"
-                        });
-                    }
-                },
-                error: function () {
-                    swal({
-                        title: "Error al aprobar la solicitud!",
+                        title: "Error al eliminar candidatos!",
                         text: "Intente nuevamente.",
                         type: "error"
                     });
@@ -373,34 +330,192 @@
         });
     });
     
-    $('#report-selector').select2().on('change', function() {
-        if (this.value > 0) {
+    $('.startProcess').on('click', function () {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        swal({
+            title: 'Comenzar Proceso',
+            text: 'Está seguro que desea activar este proceso (habilitar votación)?',
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            animation: 'slide-from-top',
+            showLoaderOnConfirm: true
+        },
+        function () {
             $.ajax({
-                url: $(this).data('url'),
-                data: {id: this.value},
-                type: 'POST',
+                url: url,
+                data: 'id=' + id,
+                type: "POST",
                 success: function (data) {
-                    if(data!=null){
-                        $('#report-table').html(data);
+                    if (data.response === 1) {
+                        swal({
+                            title: "Proceso activado!",
+                            text: "",
+                            type: "success"
+                        },
+                                function () {
+                                    location.reload();
+                                });
                     } else {
                         swal({
-                            title: "Error al bla!",
-                            text: "Intente nuevamente.",
+                            title: "Error al activar proceso!",
+                            text: data.msg || "Intente nuevamente.",
                             type: "error"
                         });
                     }
                 },
                 error: function () {
                     swal({
-                        title: "Error al bla!",
+                        title: "Error al activar proceso!",
                         text: "Intente nuevamente.",
                         type: "error"
                     });
                 }
             });
-        }
+        });
+    });
+    
+    $('.stopProcess').on('click', function () {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        swal({
+            title: 'Terminar Proceso',
+            text: 'Está seguro que desea terminar este proceso (deshabilitar votación)?',
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            animation: 'slide-from-top',
+            showLoaderOnConfirm: true
+        },
+        function () {
+            $.ajax({
+                url: url,
+                data: 'id=' + id,
+                type: "POST",
+                success: function (data) {
+                    if (data.response === 1) {
+                        swal({
+                            title: "Proceso terminado!",
+                            text: "",
+                            type: "success"
+                        },
+                                function () {
+                                    location.reload();
+                                });
+                    } else {
+                        swal({
+                            title: "Error al terminado proceso!",
+                            text: data.msg || "Intente nuevamente.",
+                            type: "error"
+                        });
+                    }
+                },
+                error: function () {
+                    swal({
+                        title: "Error al terminado proceso!",
+                        text: "Intente nuevamente.",
+                        type: "error"
+                    });
+                }
+            });
+        });
+    });
+    
+    $('.refreshResults').on('click', function () {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        swal({
+            title: 'Actualizar Resultados',
+            text: 'Se obtendrán los último registros de votos recibidos',
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            animation: 'slide-from-top',
+            showLoaderOnConfirm: true
+        },
+        function () {
+            $.ajax({
+                url: url,
+                data: 'id=' + id,
+                type: "POST",
+                success: function (data) {
+                    if (data.response === 1) {
+                        swal({
+                            title: "Votos actualizados!",
+                            text: "",
+                            type: "success"
+                        },
+                                function () {
+                                    location.reload();
+                                });
+                    } else {
+                        swal({
+                            title: "Error al actualizar votos!",
+                            text: data.msg || "Intente nuevamente.",
+                            type: "error"
+                        });
+                    }
+                },
+                error: function () {
+                    swal({
+                        title: "Error al actualizar votos!",
+                        text: "Intente nuevamente.",
+                        type: "error"
+                    });
+                }
+            });
+        });
     });
 
+    $('.addCandidate').on('click', function (e) {
+        e.preventDefault();
+        var url = $(this).attr('data-url');
+        var process = $(this).attr('data-process');
+        var candidate = $(this).attr('data-candidate');
+        swal({
+            title: 'Agregar Candidato',
+            text: 'Está seguro que desea agregar este candidato?',
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            animation: 'slide-from-top',
+            showLoaderOnConfirm: true
+        },
+        function () {
+            $.ajax({
+                url: url,
+                data: 'process=' + process + '&candidate=' + candidate,
+                type: "POST",
+                success: function (data) {
+                    if (data.response === 1) {
+                        swal({
+                            title: "Candidato agregado!",
+                            text: "",
+                            type: "success"
+                        },
+                                function () {
+                                    location.reload();
+                                });
+                    } else {
+                        swal({
+                            title: "Error al agregar candidato!",
+                            text: data.msg || "Intente nuevamente.",
+                            type: "error"
+                        });
+                    }
+                },
+                error: function () {
+                    swal({
+                        title: "Error al agregar candidato!",
+                        text: "Intente nuevamente.",
+                        type: "error"
+                    });
+                }
+            });
+        });
+    });
+    
     var sigecoApp = {
         dataFormMantenedor: function () {
             var data = '';
@@ -452,222 +567,42 @@
         }
     };
     
-    function formatMoney ( number, places, symbol, thousand, decimal ) {
-        places = !isNaN(places = Math.abs(places)) ? places : 0;
-        symbol = symbol !== undefined ? symbol : '$';
-        thousand = thousand || '.';
-        decimal = decimal || ',';
-        var number = number,
-                negative = number < 0 ? '-' : '',
-                i = parseInt(number = Math.abs(+number || 0).toFixed(places), 10) + '',
-                j = (j = i.length) > 3 ? j % 3 : 0;
-        return symbol + ' ' + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, '$1' + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : '');
-    };
-    
-    if (document.URL.indexOf('historialGastosComunes') > -1) {
-        //******* BAR CHART
-        var data = [[0, 11065161], [1, 15632865], [2, 15045372], [3, 14109583], [4, 13634087], [5, 17182678]];
-        var dataset = [{label: ' Gastos Comunes', data: data, color: '#5482FF'}];
-        var ticks = [[0, 'Enero'], [1, 'Febrero'], [2, 'Marzo'], [3, 'Abril'], [4, 'Mayo'], [5, 'Junio']];
-
-        var options = {
-            series: {
-                bars: {
-                    show: true,
-                    barWidth: 0.5,
-                    align: 'center'
-                }
-            },
-            bars: {
-                align: 'center',
-                barWidth: 0.5
-            },
-            xaxis: {
-                axisLabel: 'Meses',
-                axisLabelUseCanvas: true,
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: 'Verdana, Arial',
-                axisLabelPadding: 10,
-                tickLength: 0,
-                ticks: ticks
-            },
-            yaxis: {
-                axisLabel: 'Valor',
-                axisLabelUseCanvas: true,
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: 'Verdana, Arial',
-                axisLabelPadding: 3,
-                tickFormatter: function (v, axis) {
-                    return formatMoney(v);
-                }
-            },
-            legend: {
-                noColumns: 0,
-                labelBoxBorderColor: '#000000',
-                position: 'nw'
-            },
-            grid: {
-                hoverable: true,
-                clickable: true,
-                borderWidth: 1,
-                borderColor: '#f3f3f3',
-                tickColor: '#f3f3f3'
-            }
-        };
-
-        $(document).ready(function () {
-            $.plot($('#flot-placeholder'), dataset, options);
-            $('#flot-placeholder').useTooltip();
-            $("#flot-placeholder").bind("plotclick", function (event, pos, item) {
-                if (item) {
-                    var x = item.datapoint[0];
-                    var y = item.datapoint[1];
-                    alert(item.series.xaxis.ticks[x].label);
-                }
-            });
-        });
-
-        function gd(year, month, day) {
-            return new Date(year, month, day).getTime();
+    if (document.URL.indexOf('resultados') > -1) {
+        
+        //- BAR CHART -
+        //-------------
+        var barChartCanvas                   = $('#barChart').get(0).getContext('2d');
+        var barChart                         = new Chart(barChartCanvas);
+        var barChartData                     = areaChartData;
+        var barChartOptions                  = {
+          //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+          scaleBeginAtZero        : true,
+          //Boolean - Whether grid lines are shown across the chart
+          scaleShowGridLines      : true,
+          //String - Colour of the grid lines
+          scaleGridLineColor      : 'rgba(0,0,0,.05)',
+          //Number - Width of the grid lines
+          scaleGridLineWidth      : 1,
+          //Boolean - Whether to show horizontal lines (except X axis)
+          scaleShowHorizontalLines: true,
+          //Boolean - Whether to show vertical lines (except Y axis)
+          scaleShowVerticalLines  : true,
+          //Boolean - If there is a stroke on each bar
+          barShowStroke           : true,
+          //Number - Pixel width of the bar stroke
+          barStrokeWidth          : 2,
+          //Number - Spacing between each of the X value sets
+          barValueSpacing         : 5,
+          //Number - Spacing between data sets within X values
+          barDatasetSpacing       : 1,
+          //String - A legend template
+          legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+          //Boolean - whether to make the chart responsive
+          responsive              : true,
+          maintainAspectRatio     : true
         }
 
-        var previousPoint = null, previousLabel = null;
-
-        $.fn.useTooltip = function () {
-            $(this).bind("plothover", function (event, pos, item) {
-                if (item) {
-                    $("#flot-placeholder").css('cursor','pointer');
-                    if ((previousLabel != item.series.label) || (previousPoint != item.dataIndex)) {
-                        previousPoint = item.dataIndex;
-                        previousLabel = item.series.label;
-                        $("#tooltip").remove();
-
-                        var x = item.datapoint[0];
-                        var y = item.datapoint[1];
-
-                        var color = item.series.color;
-
-                        showTooltip(item.pageX,
-                            item.pageY,
-                            color,
-                            item.series.xaxis.ticks[x].label + ' : <strong>' + formatMoney(y) + '</strong>');
-                    }
-                } else {
-                    $('#tooltip').remove();
-                    $("#flot-placeholder").css('cursor','auto');
-                    previousPoint = null;
-                }
-            });
-        };
-
-        function showTooltip(x, y, color, contents) {
-            $('<div class="tooltip-inner" id="tooltip">' + contents + '</div>').css({
-                position: 'absolute',
-                display: 'none',
-                top: y - 40,
-                left: x - 90,
-                padding: '5px 8px',
-                'font-size': '11px',
-                'border-radius': '5px',
-                opacity: 0.82
-            }).appendTo('body').fadeIn(200);
-        }
-    }
-    
-    if (document.URL.indexOf('estacionamientos') > -1 || document.URL.indexOf('espaciosComunes') > -1) {
-        $('#fechas').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'DD/MM/YYYY h:mm A'});
-    }
-    
-    if (document.URL.indexOf('morosidad') > -1) {
-        var donutData = [
-            {label: "Debe", data: 30, color: "#3c8dbc"},
-            {label: "Morosos", data: 20, color: "#dd4b39"},
-            {label: "Pagos", data: 50, color: "#00c0ef"}
-        ];
-        $.plot("#donut-chart", donutData, {
-            series: {
-                pie: {
-                    show: true,
-                    radius: 1,
-                    innerRadius: 0.5,
-                    label: {
-                        show: true,
-                        radius: 2 / 3,
-                        formatter: labelFormatter,
-                        threshold: 0.1
-                    }
-
-                }
-            },
-            legend: {
-                show: false
-            }
-        });
-
-        /*
-         * Custom Label formatter
-         * ----------------------
-         */
-        function labelFormatter(label, series) {
-            return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
-                    + label
-                    + "<br>"
-                    + Math.round(series.percent) + "%</div>";
-        }
+        barChartOptions.datasetFill = false;
+        barChart.Bar(barChartData, barChartOptions);
     }
 }(jQuery));
-/*
-var obj = {
-  "users": {
-    "admin": {
-      "clave": "admin",
-      "condominio": 1
-    },
-    "conserje": {
-      "clave": "asdasd",
-      "condominio": 2
-    },
-    "usuario1": {
-      "clave": "usuario",
-      "condominio": 2
-    }
-  },
-  "gastosComunes": {
-    "usuario1": 51928
-  },
-  "morosidad": {
-    "usuario1": 0
-  },
-  "estacionamientos": {
-    "condominio": {
-      "2": {
-        "1": 0,
-        "2": 1,
-        "3": 1
-      }
-    }
-  },
-  "espaciosComunes": {
-    "condominio": {
-      "quincho": 0,
-      "salaMultiuso": 1
-    }
-  }
-};
-var data = JSON.stringify(obj);
-
-$("#clickMe").click(function () {
-       // do update
-      $.ajax({
-        url: "https://api.myjson.com/bins/2t2db",
-        type: "PUT",
-        data: data,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data, textStatus, jqXHR) {
-          var json = JSON.stringify(data);
-          $("#data").val(json);
-        }
-      });
-});
-*/

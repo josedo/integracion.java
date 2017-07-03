@@ -28,8 +28,8 @@
     </target>
     <target name="wsimport-client-session" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/session"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/session" destdir="${build.generated.dir}/jax-wsCache/session" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/session/wsdl/localhost_8080/session/session.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/session/session?wsdl" xnocompile="true" xendorsed="true" package="services">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/session/wsdl/localhost_8080/session/session.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/session" destdir="${build.generated.dir}/jax-wsCache/session" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/session/wsdl/localhost_42724/session/session.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/session/session?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/session/wsdl/localhost_42724/session/session.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/session"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -42,21 +42,389 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/services"/>
         <delete dir="${build.generated.dir}/jax-wsCache/session"/>
     </target>
-    <target name="wsimport-client-maintainers" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/maintainers"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/maintainers" destdir="${build.generated.dir}/jax-wsCache/maintainers" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/maintainers/wsdl/localhost_8080/maintainers/maintainers.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/maintainers/maintainers?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/maintainers/wsdl/localhost_8080/maintainers/maintainers.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/maintainers"/>
+    <target name="wsimport-client-validation" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/validation"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/validation" destdir="${build.generated.dir}/jax-wsCache/validation" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/validation/wsdl/localhost_42724/validation/validation.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/validation/validation?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/validation/wsdl/localhost_42724/validation/validation.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/validation"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/maintainers">
+            <fileset dir="${build.generated.dir}/jax-wsCache/validation">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-maintainers" depends="-init-project">
+    <target name="wsimport-client-clean-validation" depends="-init-project">
         <delete dir="${build.generated.sources.dir}/jax-ws/services"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/validation"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-session, wsimport-client-maintainers"/>
+    <target name="wsimport-client-Users" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Users"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Users" destdir="${build.generated.dir}/jax-wsCache/Users" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Users/wsdl/localhost_42724/Users/Users.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Users/Users?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Users/wsdl/localhost_42724/Users/Users.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Users"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Users">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Users" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Users"/>
+    </target>
+    <target name="wsimport-client-Candidates" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Candidates"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Candidates" destdir="${build.generated.dir}/jax-wsCache/Candidates" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Candidates/wsdl/localhost_42724/Candidates/Candidates.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Candidates/Candidates?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Candidates/wsdl/localhost_42724/Candidates/Candidates.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Candidates"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Candidates">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Candidates" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Candidates"/>
+    </target>
+    <target name="wsimport-client-Vowels" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Vowels"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Vowels" destdir="${build.generated.dir}/jax-wsCache/Vowels" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Vowels/wsdl/localhost_42724/Vowels/Vowels.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Vowels/Vowels?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Vowels/wsdl/localhost_42724/Vowels/Vowels.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Vowels"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Vowels">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Vowels" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Vowels"/>
+    </target>
+    <target name="wsimport-client-Processes" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Processes"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Processes" destdir="${build.generated.dir}/jax-wsCache/Processes" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Processes/wsdl/localhost_42724/Processes/Processes.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Processes/Processes?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Processes/wsdl/localhost_42724/Processes/Processes.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Processes"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Processes">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Processes" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Processes"/>
+    </target>
+    <target name="wsimport-client-Parties" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Parties"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Parties" destdir="${build.generated.dir}/jax-wsCache/Parties" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Parties/wsdl/localhost_42724/Parties/Parties.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Parties/Parties?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Parties/wsdl/localhost_42724/Parties/Parties.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Parties"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Parties">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Parties" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Parties"/>
+    </target>
+    <target name="wsimport-client-Census" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Census"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Census" destdir="${build.generated.dir}/jax-wsCache/Census" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Census/wsdl/localhost_42724/Census/Census.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Census/Census?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Census/wsdl/localhost_42724/Census/Census.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Census"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Census">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Census" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Census"/>
+    </target>
+    <target name="wsimport-client-Voters" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Voters"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Voters" destdir="${build.generated.dir}/jax-wsCache/Voters" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Voters/wsdl/localhost_42724/Voters/Voters.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Voters/Voters?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Voters/wsdl/localhost_42724/Voters/Voters.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Voters"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Voters">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Voters" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Voters"/>
+    </target>
+    <target name="wsimport-client-Candidates_1" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Candidates_1"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Candidates_1" destdir="${build.generated.dir}/jax-wsCache/Candidates_1" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Candidates_1/wsdl/localhost_42724/Candidates/Candidates.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Candidates/Candidates?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Candidates_1/wsdl/localhost_42724/Candidates/Candidates.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Candidates_1"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Candidates_1">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Candidates_1" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Candidates_1"/>
+    </target>
+    <target name="wsimport-client-Processes_1" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Processes_1"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Processes_1" destdir="${build.generated.dir}/jax-wsCache/Processes_1" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Processes_1/wsdl/localhost_42724/Processes/Processes.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Processes/Processes?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Processes_1/wsdl/localhost_42724/Processes/Processes.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Processes_1"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Processes_1">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Processes_1" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Processes_1"/>
+    </target>
+    <target name="wsimport-client-Processes_2" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Processes_2"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Processes_2" destdir="${build.generated.dir}/jax-wsCache/Processes_2" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Processes_2/wsdl/localhost_42724/Processes/Processes.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Processes/Processes?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Processes_2/wsdl/localhost_42724/Processes/Processes.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Processes_2"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Processes_2">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Processes_2" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Processes_2"/>
+    </target>
+    <target name="wsimport-client-Processes_3" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Processes_3"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Processes_3" destdir="${build.generated.dir}/jax-wsCache/Processes_3" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Processes_3/wsdl/localhost_42724/Processes/Processes.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Processes/Processes?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Processes_3/wsdl/localhost_42724/Processes/Processes.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Processes_3"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Processes_3">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Processes_3" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Processes_3"/>
+    </target>
+    <target name="wsimport-client-Processes_4" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Processes_4"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Processes_4" destdir="${build.generated.dir}/jax-wsCache/Processes_4" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Processes_4/wsdl/localhost_42724/Processes/Processes.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Processes/Processes?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Processes_4/wsdl/localhost_42724/Processes/Processes.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Processes_4"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Processes_4">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Processes_4" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Processes_4"/>
+    </target>
+    <target name="wsimport-client-Candidates_2" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Candidates_2"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Candidates_2" destdir="${build.generated.dir}/jax-wsCache/Candidates_2" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Candidates_2/wsdl/localhost_42724/Candidates/Candidates.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Candidates/Candidates?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Candidates_2/wsdl/localhost_42724/Candidates/Candidates.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Candidates_2"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Candidates_2">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Candidates_2" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Candidates_2"/>
+    </target>
+    <target name="wsimport-client-CandidatesProcess" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/CandidatesProcess"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CandidatesProcess" destdir="${build.generated.dir}/jax-wsCache/CandidatesProcess" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CandidatesProcess/wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/CandidatesProcess/CandidatesProcess?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CandidatesProcess/wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/CandidatesProcess"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/CandidatesProcess">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-CandidatesProcess" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/CandidatesProcess"/>
+    </target>
+    <target name="wsimport-client-CandidatesProcess_1" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_1"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CandidatesProcess_1" destdir="${build.generated.dir}/jax-wsCache/CandidatesProcess_1" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CandidatesProcess_1/wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/CandidatesProcess/CandidatesProcess?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CandidatesProcess_1/wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_1"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_1">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-CandidatesProcess_1" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_1"/>
+    </target>
+    <target name="wsimport-client-CandidatesProcess_2" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_2"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CandidatesProcess_2" destdir="${build.generated.dir}/jax-wsCache/CandidatesProcess_2" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CandidatesProcess_2/wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/CandidatesProcess/CandidatesProcess?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CandidatesProcess_2/wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_2"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_2">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-CandidatesProcess_2" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_2"/>
+    </target>
+    <target name="wsimport-client-CandidatesProcess_3" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_3"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CandidatesProcess_3" destdir="${build.generated.dir}/jax-wsCache/CandidatesProcess_3" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CandidatesProcess_3/wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/CandidatesProcess/CandidatesProcess?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CandidatesProcess_3/wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_3"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_3">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-CandidatesProcess_3" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_3"/>
+    </target>
+    <target name="wsimport-client-CandidatesProcess_4" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_4"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CandidatesProcess_4" destdir="${build.generated.dir}/jax-wsCache/CandidatesProcess_4" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CandidatesProcess_4/wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/CandidatesProcess/CandidatesProcess?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CandidatesProcess_4/wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_4"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_4">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-CandidatesProcess_4" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_4"/>
+    </target>
+    <target name="wsimport-client-Processes_5" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Processes_5"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Processes_5" destdir="${build.generated.dir}/jax-wsCache/Processes_5" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Processes_5/wsdl/localhost_42724/Processes/Processes.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Processes/Processes?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Processes_5/wsdl/localhost_42724/Processes/Processes.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Processes_5"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Processes_5">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Processes_5" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Processes_5"/>
+    </target>
+    <target name="wsimport-client-CandidatesProcess_5" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_5"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CandidatesProcess_5" destdir="${build.generated.dir}/jax-wsCache/CandidatesProcess_5" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CandidatesProcess_5/wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/CandidatesProcess/CandidatesProcess?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CandidatesProcess_5/wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_5"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_5">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-CandidatesProcess_5" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_5"/>
+    </target>
+    <target name="wsimport-client-Processes_6" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Processes_6"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Processes_6" destdir="${build.generated.dir}/jax-wsCache/Processes_6" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Processes_6/wsdl/localhost_42724/Processes/Processes.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Processes/Processes?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Processes_6/wsdl/localhost_42724/Processes/Processes.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Processes_6"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Processes_6">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Processes_6" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Processes_6"/>
+    </target>
+    <target name="wsimport-client-Processes_7" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Processes_7"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Processes_7" destdir="${build.generated.dir}/jax-wsCache/Processes_7" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Processes_7/wsdl/localhost_42724/Processes/Processes.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/Processes/Processes?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Processes_7/wsdl/localhost_42724/Processes/Processes.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Processes_7"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Processes_7">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Processes_7" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Processes_7"/>
+    </target>
+    <target name="wsimport-client-CandidatesProcess_6" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_6"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CandidatesProcess_6" destdir="${build.generated.dir}/jax-wsCache/CandidatesProcess_6" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CandidatesProcess_6/wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:42724/CandidatesProcess/CandidatesProcess?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CandidatesProcess_6/wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_6"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_6">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-CandidatesProcess_6" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services/maintainers"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/CandidatesProcess_6"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-session, wsimport-client-validation, wsimport-client-Users, wsimport-client-Candidates, wsimport-client-Vowels, wsimport-client-Processes, wsimport-client-Parties, wsimport-client-Census, wsimport-client-Voters, wsimport-client-Candidates_1, wsimport-client-Processes_1, wsimport-client-Processes_2, wsimport-client-Processes_3, wsimport-client-Processes_4, wsimport-client-Candidates_2, wsimport-client-CandidatesProcess, wsimport-client-CandidatesProcess_1, wsimport-client-CandidatesProcess_2, wsimport-client-CandidatesProcess_3, wsimport-client-CandidatesProcess_4, wsimport-client-Processes_5, wsimport-client-CandidatesProcess_5, wsimport-client-Processes_6, wsimport-client-Processes_7, wsimport-client-CandidatesProcess_6"/>
 </project>

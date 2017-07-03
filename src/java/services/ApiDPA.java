@@ -50,7 +50,7 @@ public class ApiDPA {
     }
     
     public Map getProvinces(String region) throws URISyntaxException, IOException, HttpException {
-        this.urlProvinces = String.format("https://apis.modernizacion.cl/dpa/regiones/%s/provincias", region);
+        this.urlProvinces = String.format("https://apis.digital.gob.cl/dpa/regiones/%s/provincias", region);
         BufferedReader reader = new BufferedReader(new InputStreamReader(this.getConnectionStream(this.urlProvinces)));
         String output = reader.readLine();
         Map<String, String> list = new HashMap<>();
@@ -65,7 +65,7 @@ public class ApiDPA {
     }
     
     public Map getDistricts(String province) throws URISyntaxException, IOException, HttpException {
-        this.urlDistricts = String.format("https://apis.modernizacion.cl/dpa/provincias/%s/comunas", province);
+        this.urlDistricts = String.format("https://apis.digital.gob.cl/dpa/provincias/%s/comunas", province);
         BufferedReader reader = new BufferedReader(new InputStreamReader(this.getConnectionStream(this.urlDistricts)));
         String output = reader.readLine();
         Map<String, String> list = new HashMap<>();

@@ -5,6 +5,7 @@
  */
 package integracion.java.servel.servlets;
 
+import com.google.gson.Gson;
 import entities.User;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -16,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.ws.WebServiceRef;
 import services.Session_Service;
-import org.json.*;
 
 /**
  *
@@ -24,9 +24,10 @@ import org.json.*;
  */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/session/session.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_42724/session/session.wsdl")
     private Session_Service validate;
     private User user;
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -57,18 +58,8 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        JSONObject json = new JSONObject(port.getSession(login, password));
         
-        if (null != json) {
-            this.user = new User();
-            this.user.setId(json.getString("id"));
-            this.user.setLogin(json.getString("login"));
-            this.user.setName(json.getString("name"));
-            this.user.setProfile(json.getString("profile"));
-            this.user.setRut(json.getString("rut"));
-            this.user.setDv(json.getString("dv"));
-            this.user.setStatus(json.getString("status"));
-        }
+        this.user = new Gson().fromJson(port.getSession(login, password), entities.User.class);
         
         if (this.user == null) {
             view("/login.jsp", request, response);

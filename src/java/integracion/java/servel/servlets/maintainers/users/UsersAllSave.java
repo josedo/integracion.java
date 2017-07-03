@@ -17,7 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.ws.WebServiceRef;
-import services.Maintainers_Service;
+import services.maintainers.Users_Service;
+import services.Validation_Service;
 
 /**
  *
@@ -26,8 +27,11 @@ import services.Maintainers_Service;
 @WebServlet(name = "UsersAllSave", urlPatterns = {"/mantenedores/usuarios"})
 public class UsersAllSave extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/maintainers/maintainers.wsdl")
-    private Maintainers_Service maintainers;
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_42724/Users/Users.wsdl")
+    private Users_Service usersService = new Users_Service();
+    private services.maintainers.Users port = this.usersService.getUsersPort();
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_42724/validation/validation.wsdl")
+    private Validation_Service validation;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -41,9 +45,8 @@ public class UsersAllSave extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        services.Maintainers port = this.maintainers.getMaintainersPort();
         HttpSession session = request.getSession();
-        ArrayList<User> list = new Gson().fromJson( port.all("users"), java.util.ArrayList.class );
+        ArrayList<User> list = new Gson().fromJson( this.port.all(), java.util.ArrayList.class );
         session.setAttribute("list", list);
         view("/maintainers/users/all.jsp", request, response);
     }
@@ -60,7 +63,7 @@ public class UsersAllSave extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        services.Maintainers port = this.maintainers.getMaintainersPort();
+        services.Validation val = this.validation.getValidationPort();
         String json = "{\"response\":0}";
         try {
             String id = request.getParameter("id");
@@ -71,13 +74,16 @@ public class UsersAllSave extends HttpServlet {
             String name = request.getParameter("name");
             String status = request.getParameter("status");
             String profile = request.getParameter("profile");
-            User user = new User(id, login, password, profile, name, rut, dv, status);
-            if (id.equalsIgnoreCase("0")) {
-                if (port.insert("users", new Gson().toJson( user )))
-                    json = "{\"response\":1}";
-            } else {
-                if (port.update("users", new Gson().toJson( user )))
-                    json = "{\"response\":1}";
+            
+            if (val.validaterut(rut + '-' + dv)) {
+                User user = new User(id, login, password, profile, name, rut, dv, status);
+                if (id.equalsIgnoreCase("0")) {
+                    if (this.port.insert(new Gson().toJson( user )))
+                        json = "{\"response\":1}";
+                } else {
+                    if (this.port.update(new Gson().toJson( user )))
+                        json = "{\"response\":1}";
+                }
             }
             
         } catch (Exception e) {

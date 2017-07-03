@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="http://localhost:8080/session/session?wsdl" uri="wsdl/localhost_8080/session/session.wsdl"/>
-    <system systemId="http://localhost:8080/session/session?xsd=1" uri="wsdl/localhost_8080/session/session.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/maintainers/maintainers?wsdl" uri="wsdl/localhost_8080/maintainers/maintainers.wsdl"/>
-    <system systemId="http://localhost:8080/maintainers/maintainers?xsd=1" uri="wsdl/localhost_8080/maintainers/maintainers.xsd_1.xsd"/>
+    <system systemId="http://localhost:42724/validation/validation?wsdl" uri="wsdl/localhost_42724/validation/validation.wsdl"/>
+    <system systemId="http://localhost:42724/validation/validation?xsd=1" uri="wsdl/localhost_42724/validation/validation.xsd_1.xsd"/>
+    <system systemId="http://localhost:42724/session/session?wsdl" uri="wsdl/localhost_42724/session/session.wsdl"/>
+    <system systemId="http://localhost:42724/session/session?xsd=1" uri="wsdl/localhost_42724/session/session.xsd_1.xsd"/>
+    <system systemId="http://localhost:42724/Users/Users?wsdl" uri="wsdl/localhost_42724/Users/Users.wsdl"/>
+    <system systemId="http://localhost:42724/Users/Users?xsd=1" uri="wsdl/localhost_42724/Users/Users.xsd_1.xsd"/>
+    <system systemId="http://localhost:42724/Candidates/Candidates?wsdl" uri="wsdl/localhost_42724/Candidates/Candidates.wsdl"/>
+    <system systemId="http://localhost:42724/Candidates/Candidates?xsd=1" uri="wsdl/localhost_42724/Candidates/Candidates.xsd_1.xsd"/>
+    <system systemId="http://localhost:42724/Vowels/Vowels?wsdl" uri="wsdl/localhost_42724/Vowels/Vowels.wsdl"/>
+    <system systemId="http://localhost:42724/Vowels/Vowels?xsd=1" uri="wsdl/localhost_42724/Vowels/Vowels.xsd_1.xsd"/>
+    <system systemId="http://localhost:42724/Processes/Processes?wsdl" uri="wsdl/localhost_42724/Processes/Processes.wsdl"/>
+    <system systemId="http://localhost:42724/Processes/Processes?xsd=1" uri="wsdl/localhost_42724/Processes/Processes.xsd_1.xsd"/>
+    <system systemId="http://localhost:42724/Parties/Parties?wsdl" uri="wsdl/localhost_42724/Parties/Parties.wsdl"/>
+    <system systemId="http://localhost:42724/Parties/Parties?xsd=1" uri="wsdl/localhost_42724/Parties/Parties.xsd_1.xsd"/>
+    <system systemId="http://localhost:42724/Census/Census?wsdl" uri="wsdl/localhost_42724/Census/Census.wsdl"/>
+    <system systemId="http://localhost:42724/Census/Census?xsd=1" uri="wsdl/localhost_42724/Census/Census.xsd_1.xsd"/>
+    <system systemId="http://localhost:42724/Voters/Voters?wsdl" uri="wsdl/localhost_42724/Voters/Voters.wsdl"/>
+    <system systemId="http://localhost:42724/Voters/Voters?xsd=1" uri="wsdl/localhost_42724/Voters/Voters.xsd_1.xsd"/>
+    <system systemId="http://localhost:42724/CandidatesProcess/CandidatesProcess?wsdl" uri="wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.wsdl"/>
+    <system systemId="http://localhost:42724/CandidatesProcess/CandidatesProcess?xsd=1" uri="wsdl/localhost_42724/CandidatesProcess/CandidatesProcess.xsd_1.xsd"/>
 </catalog>

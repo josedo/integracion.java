@@ -47,7 +47,7 @@
                                             <td><span class="label label-${user.status==1?"success":"danger"}">${user.status==1?"Activo":"Inactivo"}</span></td>
                                             <td>
                                                 <a class="btn btn-primary btn-xs btnEditar" data-id="${user.id}" data-url="./usuarios/update" data-original-title="Editar" data-toggle="tooltip"><i class="fa fa-pencil-square-o"></i></a>
-                                                <c:if test="${user.status==1}"><a class="btn btn-primary btn-xs btnEliminar" data-id="${user.id}" data-url="./update" data-original-title="Eliminar" data-toggle="tooltip"><i class="fa fa-times-circle"></i></a></c:if>
+                                                <c:if test="${user.status==1}"><a class="btn btn-primary btn-xs btnEliminar" data-id="${user.id}" data-url="./usuarios/update" data-original-title="Eliminar" data-toggle="tooltip"><i class="fa fa-times-circle"></i></a></c:if>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -83,7 +83,7 @@
                             <div class="form-group">
                                 <label for="pass" class="col-sm-2 control-label">Contraseña</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="password" id="password" placeholder="Contraseña" type="password" required="required">
+                                    <input class="form-control" name="password" id="password" placeholder="Contraseña" type="password">
                                 </div>
                             </div>
                             <div class="form-group">

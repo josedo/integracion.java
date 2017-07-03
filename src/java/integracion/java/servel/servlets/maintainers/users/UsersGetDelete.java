@@ -8,7 +8,6 @@ package integracion.java.servel.servlets.maintainers.users;
 import com.google.gson.Gson;
 import entities.User;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.ws.WebServiceRef;
-import services.Maintainers_Service;
+import services.maintainers.Users_Service;
 
 /**
  *
@@ -26,8 +25,9 @@ import services.Maintainers_Service;
 @WebServlet(name = "UsersGetDelete", urlPatterns = {"/mantenedores/usuarios/update"})
 public class UsersGetDelete extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/maintainers/maintainers.wsdl")
-    private Maintainers_Service maintainers;
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_42724/Users/Users.wsdl")
+    private Users_Service usersService = new Users_Service();
+    private services.maintainers.Users port = this.usersService.getUsersPort();
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -41,11 +41,10 @@ public class UsersGetDelete extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        services.Maintainers port = this.maintainers.getMaintainersPort();
         HttpSession session = request.getSession();
         String json = "";
         try {
-            User user = new Gson().fromJson( port.get("users", request.getParameter("id")), entities.User.class );
+            User user = new Gson().fromJson( this.port.get(request.getParameter("id")), entities.User.class );
             json = user.toString();
         } catch (Exception e) {
             System.out.println(e);
@@ -65,8 +64,17 @@ public class UsersGetDelete extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        services.Maintainers port = this.maintainers.getMaintainersPort();
         HttpSession session = request.getSession();
+        String json = "{\"response\":0}";
+        try {
+            String id = request.getParameter("id");
+            if (this.port.delete(id))
+                json = "{\"response\":1}";
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        session.setAttribute("json", json);
+        view("/include/json.jsp", request, response);
     }
     
     private void view(String view, HttpServletRequest request, HttpServletResponse response)
